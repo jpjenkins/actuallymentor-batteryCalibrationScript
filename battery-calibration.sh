@@ -77,9 +77,9 @@ while true; do
     if battery status | head -n 1 | grep -q "Battery at $TARGET_LEVEL%"; then
     	echo "target level reached, breaking to trap"
     	send_notification "Maintaining at $TARGET_LEVEL%" "Battery Calibration Complete" "default"
-    	trap setMaintain EXIT
     else
     	sleep $SLEEP_DURATION
     	continue
 	fi
 done
+trap setMaintain EXIT
